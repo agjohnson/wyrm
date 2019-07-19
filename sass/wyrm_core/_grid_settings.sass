@@ -23,19 +23,17 @@
 // Styleguide 5.0
 
 
-@import "neat-helpers"
+@import "neat"
 
-$column: golden-ratio(1em, 3) !default
-$gutter: golden-ratio(1em, 1) !default
-$grid-columns: 12 !default
-$max-width: 100% !default
-$border-box-sizing: true !default
-$default-feature: min-width
-$default-layout-direction: LTR !default
+//$column: golden-ratio(1em, 3) !default
+//$max-width: 100% !default
+//$border-box-sizing: true !default
+//$default-feature: min-width
+$gutter: golden-ratio(1em, 1)
 
-$mobile: new-breakpoint(max-width 480px 4)
-$tablet: new-breakpoint(max-width 768px 8)
-$desktop: new-breakpoint(min-width 769px 12)
-$desktop-wide: new-breakpoint(min-width 1200px 12)
-$desktop-wider: new-breakpoint(min-width 1400px 12)
-
+$neat-grid: (columns: 12, gutter: $gutter)
+$mobile: (columns: 4, media: 480px)
+$tablet: (columns: 8, media: 768px)
+$desktop: (columns: 12, media: 769px)
+$desktop-wide: (columns: 12, media: 1200px)
+$desktop-wider: (columns: 12, media: 1400px)

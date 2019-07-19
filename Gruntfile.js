@@ -1,3 +1,5 @@
+const sass = require('node-sass');
+
 module.exports = function(grunt) {
 
   // load all grunt tasks
@@ -5,7 +7,7 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
 
-    open : {
+    open: {
       dev: {
         path: 'http://localhost:9898'
       }
@@ -22,18 +24,18 @@ module.exports = function(grunt) {
     },
 
     sass: {
-      dev: {
+      test: {
         options: {
-          style: 'expanded',
-          loadPath: ['bower_components/bourbon/dist', 'bower_components/neat/app/assets/stylesheets', 'bower_components/font-awesome/scss']
+          implementation: sass,
+          includePaths: [
+            'bower_components/bourbon/dist',
+            'bower_components/neat/core',
+            'bower_components/font-awesome/scss'
+          ]
         },
-        files: [{
-          expand: true,
-          cwd: 'sass',
-          src: ['*.sass'],
-          dest: 'css',
-          ext: '.css'
-        }]
+        files: {
+          'css/wyrm_test.css': 'sass/wyrm_test.sass'
+        }
       }
     },
 
@@ -50,15 +52,24 @@ module.exports = function(grunt) {
       bower_update: {
         cmd: 'bower update'
       },
-      kss: {
-        cmd: 'kss-node sass/ docs/ -sass css/wyrm_test.css --template docs_template'
+    },
+
+    kss: {
+      options: {
+        verbose: true,
+        css: 'css/wyrm_test.css',
+        homepage: 'sass/styleguide.md'
+      },
+      dist: {
+        src: ['sass/'],
+        dest: 'docs/',
       }
     },
 
     watch: {
       build: {
         files: ['sass/**/*', 'bower_components/**/*.sass', 'docs_template/*.html'],
-        tasks: ['sass:dev','exec:kss']
+        tasks: ['sass','kss']
       },
       livereload: {
         files: ['docs/**/*'],
@@ -86,10 +97,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-sass');
+  grunt.loadNpmTasks('grunt-kss');
 
-  grunt.registerTask('default', ['sass:dev','exec:kss','copy:fonts','connect','open','watch']);
-  grunt.registerTask('test', ['sass:dev']);
+  grunt.registerTask('default', ['sass','kss','copy:fonts','connect','open','watch']);
+  grunt.registerTask('test', ['sass']);
   grunt.loadNpmTasks('grunt-release');
 
 }

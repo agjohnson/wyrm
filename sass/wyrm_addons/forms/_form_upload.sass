@@ -8,7 +8,7 @@
   vertical-align: middle
   +transition(border-color .1s ease-in)
   +clearfix
-  +media($mobile)
+  +grid-media($mobile)
     width: 100%
   .image-drop
     display: none
@@ -36,7 +36,7 @@
   .wy-form-upload-content
     vertical-align: middle
     display: inline-block
-    +media($mobile)
+    +grid-media($mobile)
       width: 100%
 
 .wy-form-upload.wy-form-upload-big
@@ -78,7 +78,7 @@
   p
     margin-bottom: 0
 
-+media($mobile)
++grid-media($mobile)
   .wy-form-upload
     .wy-form-upload-image
       margin-bottom: $base-line-height / 2

@@ -79,8 +79,7 @@ input, select, textarea
 
 .wy-control-group
   margin-bottom: $base-line-height
-  +outer-container
-  +clearfix
+  +grid-container
 
 .wy-control-group.wy-control-group-required > label:after
   content: " *"
@@ -97,16 +96,13 @@ input, select, textarea
       &[type="text"], &[type="password"], &[type="email"], &[type="url"], &[type="date"], &[type="month"], &[type="time"], &[type="datetime"], &[type="datetime-local"], &[type="week"], &[type="number"], &[type="search"], &[type="tel"], &[type="color"]
         width: 100%
 .wy-control-group .wy-form-full
-  +span-columns(12)
-  +omega-type
+  +grid-column(12)
 
 .wy-control-group .wy-form-halves
-  +span-columns(6)
-  +omega-type(2n)
+  +grid-column(6)
 
 .wy-control-group .wy-form-thirds
-  +span-columns(4)
-  +omega-type(3n)
+  +grid-column(4)
 
 // Sometimes you just output text in a form, not an actual input
 .wy-control-group.wy-control-group-no-input .wy-control
