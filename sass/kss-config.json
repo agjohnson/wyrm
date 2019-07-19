@@ -1,0 +1,8 @@
+{
+  "source": ".",
+  "css": [
+    "../css/wyrm-test.css"
+  ],
+  "js": [],
+  "title": "Wyrm Style Guide"
+}
